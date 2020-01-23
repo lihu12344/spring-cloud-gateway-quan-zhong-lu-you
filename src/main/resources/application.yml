@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: custom_route
+          uri: http://www.baidu.com
+          predicates:
+            - Path=/hello
+            - Weight=group1,2
+          filters:
+            - StripPrefix=1
+        - id: custom_route2
+          uri: http://www.jd.com
+          predicates:
+            - Path=/hello
+            - Weight=group1,1
+          filters:
+            - StripPrefix=1
